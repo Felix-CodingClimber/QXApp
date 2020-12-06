@@ -1,0 +1,2 @@
+# QXApp
+ QR Scanner Plus
