@@ -1,0 +1,8 @@
+*.dll
+*.pdb
+*.cache
+*.txt
+bin/
+obj/
+AppPackages/
+BundleArtifacts/

@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="QXScan.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QXScan"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="Black">
+    <Page.Resources>
+        <Storyboard x:Name="focusStory">
+            <DoubleAnimation Duration="0:0:0.1" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="focusBorder" d:IsOptimized="True"/>
+        </Storyboard>
+    </Page.Resources>
+
+    <Grid x:Name="screen" Background="Black">
+        <!--Camera preview-->
+        <CaptureElement Name="PreviewControl" Canvas.ZIndex="1" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <MediaElement x:Name="sound" Source="Media/camera-focus-beep-01.mp3" AutoPlay="false"/>
+
+        <TextBlock x:Name="qrText" HorizontalAlignment="Center" Margin="0,0,0,160" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Canvas.ZIndex="4" />
+        <Rectangle x:Name="focusBorder" Height="150" Stroke="#FF4CFF00" Width="150" StrokeThickness="3" Canvas.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Opacity="0" />
+        <Button x:Name="btnOpen" Content="Open" HorizontalAlignment="Right" Margin="0,0,60,20" VerticalAlignment="Bottom" Foreground="{x:Null}" BorderBrush="{x:Null}" Style="{StaticResource MyButton}" Click="btnOpen_Click" Canvas.ZIndex="3" Visibility="Collapsed">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Assets/open.png"/>
+            </Button.Background>
+        </Button>
+        <ToggleSwitch x:Name="tgSound" Header="Sound" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Canvas.ZIndex="2" OffContent="" OnContent="" IsOn="True" FontSize="15" Toggled="switch_Toggled" RenderTransformOrigin="0.5,0.5" Width="24">
+            <ToggleSwitch.RenderTransform>
+                <CompositeTransform TranslateX="0.5" TranslateY="0.5"/>
+            </ToggleSwitch.RenderTransform>
+        </ToggleSwitch>
+        <ToggleSwitch x:Name="tgVibrate" Header="Vibrate" HorizontalAlignment="Left" Margin="20,95,0,0" VerticalAlignment="Top" Canvas.ZIndex="2" OffContent="" OnContent="" Toggled="switch_Toggled" RenderTransformOrigin="0.5,0.5">
+            <ToggleSwitch.RenderTransform>
+                <CompositeTransform TranslateX="0.5" TranslateY="0.5"/>
+            </ToggleSwitch.RenderTransform>
+        </ToggleSwitch>
+        <ToggleSwitch x:Name="tgFlash" Header="Flash" HorizontalAlignment="Right" Margin="0,20,-85,0" VerticalAlignment="Top" OffContent="" OnContent="" Width="130" Height="60" Toggled="tgFlash_Toggled" Canvas.ZIndex="2" RenderTransformOrigin="0.5,0.5">
+            <ToggleSwitch.RenderTransform>
+                <CompositeTransform TranslateX="0.5" TranslateY="0.5"/>
+            </ToggleSwitch.RenderTransform>
+        </ToggleSwitch>
+        <Button x:Name="btnList" Content="" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Bottom" Style="{StaticResource MyButton}" Height="65" Width="65" RenderTransformOrigin="0.5,0.5" Canvas.ZIndex="3" Click="btnList_Click">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Assets/list.png"/>
+            </Button.Background>
+        </Button>
+        <Image x:Name="AFL" HorizontalAlignment="Center" Height="150" Margin="0" VerticalAlignment="Center" Width="150" Source="Assets/AFL.png" Canvas.ZIndex="3" />
+    </Grid>
+</Page>
